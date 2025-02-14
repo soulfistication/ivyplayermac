@@ -19,7 +19,12 @@ class PlayerViewModel: ObservableObject {
     }
     
     func togglePlay(songIndex: Int) {
-        self.songs[songIndex].isPlaying.toggle()
+        
+        for index in songs.indices {
+            songs[index].isPlaying = false
+        }
+        
+        self.songs[songIndex].isPlaying = true
         self.player?.play()
     }
     
