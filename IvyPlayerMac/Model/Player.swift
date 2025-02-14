@@ -13,7 +13,7 @@ class Player: NSObject, AVAudioPlayerDelegate {
     
     init?(song: Song) {
         guard let url = Bundle.main.url(forResource: song.filename, withExtension: ".mp4") else {
-            print("Can't load song \(song.filename)")
+            print("Can't find song \(song.filename) in main bundle.")
             return nil
         }
         do {

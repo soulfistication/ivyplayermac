@@ -50,7 +50,7 @@ struct PlayList: View {
               isPlaying: false,
               isFavorite: false,
               artist: "Benee",
-              name: "Supalonely (feat Gus Dapperton",
+              name: "Supalonely (feat Gus Dapperton)",
               filename: "Benee - Supalonely"),
          Song(id: 7,
               isPlaying: false,
