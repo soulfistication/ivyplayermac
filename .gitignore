@@ -131,6 +131,6 @@ crashlytics-build.properties
 fabric.properties
 
 ## Audio files
-*.mp3
-*.mp4
+**.mp3
+**.mp4
 
