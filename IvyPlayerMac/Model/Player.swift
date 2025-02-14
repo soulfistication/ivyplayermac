@@ -27,6 +27,11 @@ class Player: NSObject, AVAudioPlayerDelegate {
     }
     
     func play() {
-        player?.play()
+        guard let player else { return }
+        if player.isPlaying {
+            player.stop()
+        } else {
+            player.play()
+        }
     }
 }
