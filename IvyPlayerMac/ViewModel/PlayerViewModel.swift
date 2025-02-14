@@ -24,8 +24,11 @@ class PlayerViewModel: ObservableObject {
             songs[index].isPlaying = false
         }
         
-        self.songs[songIndex].isPlaying = true
-        self.player?.play()
+        songs[songIndex].isPlaying = true
+        
+        player = Player(song: songs[songIndex])
+        
+        player?.play()
     }
     
 }
