@@ -5,13 +5,13 @@
 //  Created by Ivan Almada on 2/13/25.
 //
 
-import AVFoundation
+import AVFAudio
 
-class Player: NSObject, AVAudioPlayerDelegate {
+class Player {
     
     private var player: AVAudioPlayer?
     
-    init?(song: Song) {
+    init?(song: Song, delegate: AVAudioPlayerDelegate) {
         guard let url = Bundle.main.url(forResource: song.filename, withExtension: ".mp4") else {
             print("Can't find song \(song.filename) in main bundle.")
             return nil
@@ -21,8 +21,8 @@ class Player: NSObject, AVAudioPlayerDelegate {
         } catch let error {
             print(String(describing: error))
         }
-        super.init()
-        self.player?.delegate = self
+
+        self.player?.delegate = delegate
         self.player?.prepareToPlay()
     }
     
