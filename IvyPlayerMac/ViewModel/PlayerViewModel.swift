@@ -13,22 +13,38 @@ class PlayerViewModel: ObservableObject {
     
     @Published var songs: [Song]
     
+    private var playingSongIndex: Int?
+    
+    private var playingSong: Song?
+    
     init(songs: [Song]) {
         self.songs = songs
-        self.player = Player(song: songs.first!)
     }
     
-    func togglePlay(songIndex: Int) {
-        
-        for index in songs.indices {
-            songs[index].isPlaying = false
+    func play(songIndex: Int) {
+        if let playingSongIndex {
+            if playingSongIndex == songIndex {
+                player?.stop()
+                songs[playingSongIndex].isPlaying = false
+                self.playingSongIndex = nil
+                self.playingSong = nil
+            } else {
+                songs[playingSongIndex].isPlaying = false
+                player?.stop()
+                let song = songs[songIndex]
+                songs[songIndex].isPlaying = true
+                player = Player(song: song)
+                player?.play()
+                self.playingSongIndex = songIndex
+                self.playingSong = song
+            }
+        } else {
+            songs[songIndex].isPlaying = true
+            playingSongIndex = songIndex
+            let song = songs[songIndex]
+            playingSong = song
+            player = Player(song: song)
+            player?.play()
         }
-        
-        songs[songIndex].isPlaying = true
-        
-        player = Player(song: songs[songIndex])
-        
-        player?.play()
     }
-    
 }

@@ -26,7 +26,7 @@ struct PlayListRow: View {
                     .padding(.vertical)
             }
             Button("\(song.artist) - \(song.name)") {
-                viewModel.togglePlay(songIndex: songIndex)
+                viewModel.play(songIndex: songIndex)
             }
         }
     }
